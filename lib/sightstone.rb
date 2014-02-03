@@ -7,6 +7,7 @@ require 'sightstone/modules/league_module'
 require 'sightstone/modules/stats_module'
 require 'sightstone/modules/team_module'
 require 'sightstone/modules/datadragon_module'
+require 'sightstone/modules/static_module'
 
 # This is the main class of the Sightstone gem. All calls should be perfomrmed through this class.
 # @attr [String] region The default region
@@ -17,13 +18,14 @@ require 'sightstone/modules/datadragon_module'
 # @attr [LeagueModule] League module to call the leagues api
 # @attr [StatsModule] Stats module to call the stats api
 # @attr [TeamModule] Team module to call the team api
+# @attr [StaticModule] Static module to call static api
 module Sightstone
 
 class Sightstone
   
   attr_accessor :region
   attr_accessor :api_key
-  attr_accessor :summoner, :champion, :game, :league, :stats, :team, :ddragon
+  attr_accessor :summoner, :champion, :game, :league, :stats, :team, :ddragon, :static
   
   # @param api_key [String] Riot developer api key
   # @param region [String] The default region to be used. See riots dev. page for supported regions.
@@ -38,6 +40,7 @@ class Sightstone
     @stats = StatsModule.new(self)
     @team = TeamModule.new(self)
     @ddragon = DatadragonModule.new(self)
+    @static = StaticModule.new(self)
   end
 end
 
